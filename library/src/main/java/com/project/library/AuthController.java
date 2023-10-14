@@ -13,6 +13,7 @@ public class AuthController {
     @Autowired
     private JwtService jwtService;
 
+
     @PermitAll
     @PostMapping("/auth")
     public String authenticate(@RequestBody AuthRequest authRequest) {
