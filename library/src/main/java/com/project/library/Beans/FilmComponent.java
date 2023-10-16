@@ -19,8 +19,4 @@ public class FilmComponent {
         return film;
     }
 
-    @Bean
-    public FilmRepository getFilmRepository(){
-        return new FilmRepository();
-    }
 }

@@ -20,8 +20,4 @@ public class DirectorComponent {
         return director;
     }
 
-    @Bean
-    public DirectorRepository getDirectorRepository(){
-        return new DirectorRepository();
-    }
 }
