@@ -15,7 +15,7 @@ public class AuthController {
 
 
     @PermitAll
-    @PostMapping("/auth")
+    @PostMapping("/b")
     public String authenticate(@RequestBody AuthRequest authRequest) {
         // Realiza la autenticación (verifica las credenciales) aquí.
         if (authRequest.getUsername().equals("usuario") && authRequest.getPassword().equals("contrasena")) {
