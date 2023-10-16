@@ -1,37 +1,23 @@
-package com.project.library.model;
+package com.project.library.DTO;
 
 import java.util.Date;
 
-public class Film {
-    private long id;
+public class FilmDTO {
+    
     private String name;
     private String genre;
     private String director;
     private Date launchDate;
 
-    public Film(){
+    public FilmDTO(){
 
     }
-    public Film(long id, String name, String genre, String director, Date launDate){
-        this.id = id;
+
+    public FilmDTO(String name, String genre, String director, Date launchDate){
         this.name = name;
         this.genre = genre;
         this.director = director;
-        this.launchDate = launDate;
-    }
-
-    @Override
-    public String toString(){
-        String description = "Name = " + name+ ", genre = " + genre+ ", director = " + director+ ", launch date = " + launchDate+".\n"; 
-        return description;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getId() {
-        return id;
+        this.launchDate = launchDate;
     }
 
     public void setName(String name) {
