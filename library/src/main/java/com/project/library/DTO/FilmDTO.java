@@ -1,19 +1,21 @@
 package com.project.library.DTO;
 
+import com.project.library.model.Director;
+
 import java.util.Date;
 
 public class FilmDTO {
     
     private String name;
     private String genre;
-    private String director;
+    private Director director;
     private Date launchDate;
 
     public FilmDTO(){
 
     }
 
-    public FilmDTO(String name, String genre, String director, Date launchDate){
+    public FilmDTO(String name, String genre, Director director, Date launchDate){
         this.name = name;
         this.genre = genre;
         this.director = director;
@@ -36,11 +38,11 @@ public class FilmDTO {
         return genre;
     }
 
-    public void setDirector(String director) {
+    public void setDirector(Director director) {
         this.director = director;
     }
 
-    public String getDirector() {
+    public Director getDirector() {
         return director;
     }
 

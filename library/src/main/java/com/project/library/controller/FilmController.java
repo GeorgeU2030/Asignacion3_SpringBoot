@@ -5,13 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.project.library.DTO.FilmDTO;
 import com.project.library.model.Film;
@@ -33,8 +27,8 @@ public class FilmController {
         return service.listFilms();
     }
 
-    @GetMapping("/get")
-    public String filmDetails(@RequestParam long id){
+    @GetMapping("/get/{id}")
+    public String filmDetails(@PathVariable long id){
         return service.detailFilm(id);
     }
 
@@ -43,18 +37,18 @@ public class FilmController {
         service.createFilm(film);
     }
 
-    @PutMapping("/update")
-    public void updateFilm(@RequestBody FilmDTO film){
-        
+    @PutMapping("/update/{id}")
+    public void updateFilm(@PathVariable long id, @RequestBody FilmDTO film){
+        service.updateFilm(id, film);
     }
 
-    @DeleteMapping("/delete")
-    public void deleteFilm(@RequestParam long id){
-
+    @DeleteMapping("/delete/{id}")
+    public void deleteFilm(@PathVariable long id){
+        service.deleteFilm(id);
     }
 
-    @GetMapping("/filterByDirector")
-    public List<Film> getFilmsByDirector(@RequestParam String directorName){
-        return new ArrayList<Film>();
+    @GetMapping("/filterByDirector/{directorId}")
+    public List<Film> getFilmsByDirector(@PathVariable long directorId){
+        return service.getFilmsByDirector(directorId);
     }
 }
