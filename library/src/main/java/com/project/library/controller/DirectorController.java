@@ -5,13 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.project.library.DTO.DirectorDTO;
 import com.project.library.model.Director;
@@ -31,25 +25,25 @@ public class DirectorController {
     @GetMapping("/list")
     public List<Director> listDirector(){
         return new ArrayList<Director>();
-    } 
+    }
 
-    @GetMapping("/get")
-    public String directorDetails(){
-        return "";
+    @GetMapping("/get/{id}")
+    public Director directorDetails(@PathVariable long id) {
+        return service.getDirectorById(id);
     }
 
     @PostMapping("/post")
-    public void createDirector(@RequestBody DirectorDTO director){
-
+    public void createDirector(@RequestBody DirectorDTO directorDTO) {
+        service.createDirector(directorDTO);
     }
 
-    @PutMapping("/update")
-    public void updateDirector(@RequestBody DirectorDTO director){
-
+    @PutMapping("/update/{id}")
+    public void updateDirector(@PathVariable long id, @RequestBody DirectorDTO directorDTO) {
+        service.updateDirector(id, directorDTO);
     }
 
-    @DeleteMapping("/delete")
-    public void deleteDirector(@RequestParam long id){
-
+    @DeleteMapping("/delete/{id}")
+    public void deleteDirector(@PathVariable long id) {
+        service.deleteDirector(id);
     }
 }
