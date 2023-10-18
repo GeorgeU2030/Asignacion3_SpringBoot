@@ -6,13 +6,13 @@ public class Film {
     private long id;
     private String name;
     private String genre;
-    private String director;
+    private Director director;
     private Date launchDate;
 
     public Film(){
 
     }
-    public Film(long id, String name, String genre, String director, Date launDate){
+    public Film(long id, String name, String genre, Director director, Date launDate){
         this.id = id;
         this.name = name;
         this.genre = genre;
@@ -50,11 +50,11 @@ public class Film {
         return genre;
     }
 
-    public void setDirector(String director) {
+    public void setDirector(Director director) {
         this.director = director;
     }
 
-    public String getDirector() {
+    public Director getDirector() {
         return director;
     }
 

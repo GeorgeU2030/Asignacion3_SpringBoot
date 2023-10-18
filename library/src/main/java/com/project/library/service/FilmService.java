@@ -23,11 +23,7 @@ public class FilmService {
     }
 
     public void createFilm(FilmDTO dto){
-        Film film =component.getFilm();
-        film.setName(dto.getName());
-        film.setGenre(dto.getGenre());
-        film.setDirector(dto.getDirector());
-        film.setLaunchDate(dto.getLaunchDate());
+        Film film =fromDTOToFilm(dto);
         repository.addFilm(film);
     }
 
@@ -43,6 +39,27 @@ public class FilmService {
         return "Film doesn't exist.";
     }
 
+    public void updateFilm(long id, FilmDTO filmDTO) {
+        Film film=fromDTOToFilm(filmDTO);
+        Film existingFilm = repository.getFilmById(id);
+        if (existingFilm != null) {
+            // Actualiza los campos necesarios del film existente
+            existingFilm.setName(film.getName());
+            existingFilm.setGenre(film.getGenre());
+            existingFilm.setDirector(film.getDirector());
+            existingFilm.setLaunchDate(film.getLaunchDate());
+            // Luego, actualiza el film en el repositorio
+            repository.updateFilm(existingFilm);
+        }
+    }
+
+    public void deleteFilm(long id) {
+        repository.deleteFilm(id);
+    }
+
+    public List<Film> getFilmsByDirector(long directorId) {
+        return repository.findFilmsByDirectorId(directorId);
+    }
     public Film fromDTOToFilm(FilmDTO dto){
         Film film = component.getFilm();
         film.setGenre(dto.getGenre());

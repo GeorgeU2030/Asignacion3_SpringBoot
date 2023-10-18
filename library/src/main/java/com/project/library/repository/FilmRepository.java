@@ -34,6 +34,30 @@ public class FilmRepository {
         }
         return null;
     }
-    
+
+    public void updateFilm(Film updatedFilm) {
+        for (int i = 0; i < films.size(); i++) {
+            if (films.get(i).getId() == updatedFilm.getId()) {
+                films.set(i, updatedFilm);
+                break;
+            }
+        }
+    }
+
+    public void deleteFilm(long id) {
+        films.removeIf(film -> film.getId() == id);
+    }
+
+    public ArrayList<Film> findFilmsByDirectorId(long directorId) {
+        ArrayList<Film> filmsByDirector = new ArrayList<>();
+        for (Film film : films) {
+            if (film.getDirector().getId() == directorId) {
+                filmsByDirector.add(film);
+            }
+        }
+        return filmsByDirector;
+    }
+
+
 
 }
