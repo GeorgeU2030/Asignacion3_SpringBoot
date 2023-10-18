@@ -11,7 +11,7 @@ import com.project.library.DTO.DirectorDTO;
 import com.project.library.model.Director;
 import com.project.library.service.DirectorService;
 
-@Controller
+@RestController
 @RequestMapping("/director")
 public class DirectorController {
 
@@ -24,7 +24,7 @@ public class DirectorController {
     
     @GetMapping("/list")
     public List<Director> listDirector(){
-        return new ArrayList<Director>();
+        return service.getAllDirectors();
     }
 
     @GetMapping("/get/{id}")
@@ -33,8 +33,7 @@ public class DirectorController {
     }
 
     @PostMapping("/post")
-    public void createDirector(@RequestBody DirectorDTO directorDTO) {
-        service.createDirector(directorDTO);
+    public Director createDirector(@RequestBody DirectorDTO directorDTO) {return service.createDirector(directorDTO);
     }
 
     @PutMapping("/update/{id}")

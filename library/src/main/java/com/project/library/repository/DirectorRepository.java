@@ -15,8 +15,9 @@ public class DirectorRepository {
         directors = new ArrayList<Director>();
     }
 
-    public void addDirector(Director director){
+    public Director addDirector(Director director){
         directors.add(director);
+        return director;
     }
 
     public ArrayList<Director> getDirectors(){

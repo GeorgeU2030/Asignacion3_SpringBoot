@@ -22,10 +22,9 @@ public class DirectorService {
         this.directorRepository = directorRepository;
     }
 
-    public void createDirector(DirectorDTO directorDTO) {
-
+    public Director createDirector(DirectorDTO directorDTO) {
         Director newDirector = fromDTOToDirector(directorDTO);
-        directorRepository.addDirector(newDirector);
+        return directorRepository.addDirector(newDirector);
     }
 
     public List<Director> getAllDirectors() {

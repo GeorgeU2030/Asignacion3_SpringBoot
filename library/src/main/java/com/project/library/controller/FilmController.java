@@ -11,7 +11,7 @@ import com.project.library.DTO.FilmDTO;
 import com.project.library.model.Film;
 import com.project.library.service.FilmService;
 
-@Controller
+@RestController
 @RequestMapping("/film")
 public class FilmController {
 
