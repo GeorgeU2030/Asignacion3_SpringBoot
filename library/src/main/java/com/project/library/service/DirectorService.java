@@ -22,10 +22,9 @@ public class DirectorService {
         this.directorRepository = directorRepository;
     }
 
-    public void createDirector(DirectorDTO directorDTO) {
-
+    public Director createDirector(DirectorDTO directorDTO) {
         Director newDirector = fromDTOToDirector(directorDTO);
-        directorRepository.addDirector(newDirector);
+        return directorRepository.addDirector(newDirector);
     }
 
     public List<Director> getAllDirectors() {
@@ -36,18 +35,26 @@ public class DirectorService {
         return directorRepository.getDirectorById(id);
     }
 
-    public void updateDirector(long id, DirectorDTO directorDTO) {
+    public boolean updateDirector(long id, DirectorDTO directorDTO) {
+        boolean validate=false;
         Director director=fromDTOToDirector(directorDTO);
         Director existingDirector = directorRepository.getDirectorById(id);
         if (existingDirector != null) {
             existingDirector.setName(director.getName());
-            directorRepository.updateDirector(existingDirector);
+            validate=directorRepository.updateDirector(existingDirector);
+
         }
+        return validate;
     }
 
-    public void deleteDirector(long id) {
-        // Puedes eliminar al director por ID.
-        directorRepository.deleteDirector(id);
+    public boolean deleteDirector(long id) {
+        boolean validate=false;
+        Director existingDirector = directorRepository.getDirectorById(id);
+        if (existingDirector != null) {
+            validate=directorRepository.deleteDirector(existingDirector.getId());
+
+        }
+        return validate;
     }
 
     public Director fromDTOToDirector(DirectorDTO dto){

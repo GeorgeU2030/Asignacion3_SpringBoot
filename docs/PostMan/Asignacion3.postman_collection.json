@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "00cb2ff3-3e20-49ef-8da2-c9bb7c5d3795",
+		"name": "Asignacion3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30550277"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"usuario1\",\r\n    \"password\": \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8090/auth"
+			},
+			"response": []
+		},
+		{
+			"name": "all directors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer aeyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYxNjY0MywiaWF0IjoxNjk3NTk4NjQzfQ.tm0GfdK1GRGQC1NcnQwdgG85KXIaK05mEUoZf_tREpswj23UsR5ySYpYmOLJiFs2kGZHBx5GJbNmp5ttbUdvKA",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8080/director/directores"
+			},
+			"response": []
+		},
+		{
+			"name": "create director",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Julio\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/director/director",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"director",
+						"director"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "director by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/director/director/2"
+			},
+			"response": []
+		},
+		{
+			"name": "update director",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Julito\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/director/director/2"
+			},
+			"response": []
+		},
+		{
+			"name": "delete director",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/director/director/2"
+			},
+			"response": []
+		},
+		{
+			"name": "alll films",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8080/pelicula/peliculas"
+			},
+			"response": []
+		},
+		{
+			"name": "create film",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\":\"Rapidos y furiosos\",\r\n   \"genre\":\"Accion\",\r\n   \"director\":{\r\n       \"id\":2,\r\n       \"name\":\"julito\"\r\n   },\r\n   \"launchDate\":\"2023-10-17T14:30:00.000Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/pelicula/pelicula"
+			},
+			"response": []
+		},
+		{
+			"name": "film by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/pelicula/pelicula/2"
+			},
+			"response": []
+		},
+		{
+			"name": "update film",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\":\"Rapidos y furiosos\",\r\n   \"genre\":\"Terror\",\r\n   \"director\":{\r\n       \"id\":2,\r\n       \"name\":\"julito\"\r\n   },\r\n   \"launchDate\":\"2023-10-17T14:30:00.000+0000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pelicula/pelicula/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pelicula",
+						"pelicula",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete film",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/pelicula/pelicula/2"
+			},
+			"response": []
+		},
+		{
+			"name": "films by director",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY5NzYyMDc4OSwiaWF0IjoxNjk3NjAyNzg5fQ.TmGXmq-hx4upZ2AL80hhsZwo5H4cPW4Rq2PnC6ZkcU-51q6ylEFuWM8Vo4OXb6-dy5-R2y8Dkkc0d7A2a04tPw",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8080/pelicula/directores/2/peliculas"
+			},
+			"response": []
+		}
+	]
+}

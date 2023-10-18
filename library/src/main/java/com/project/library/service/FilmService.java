@@ -22,24 +22,25 @@ public class FilmService {
         this.repository = repository;
     }
 
-    public void createFilm(FilmDTO dto){
+    public Film createFilm(FilmDTO dto){
         Film film =fromDTOToFilm(dto);
-        repository.addFilm(film);
+        return repository.addFilm(film);
     }
 
     public List<Film> listFilms(){
         return repository.getFilms();
     }
 
-    public String detailFilm(long id){
+    public Film detailFilm(long id){
         Film film = repository.getFilmById(id);
         if(film != null){
-            return film.toString();
+            return film;
         }
-        return "Film doesn't exist.";
+        return null;
     }
 
-    public void updateFilm(long id, FilmDTO filmDTO) {
+    public boolean updateFilm(long id, FilmDTO filmDTO) {
+        boolean validate=false;
         Film film=fromDTOToFilm(filmDTO);
         Film existingFilm = repository.getFilmById(id);
         if (existingFilm != null) {
@@ -49,12 +50,13 @@ public class FilmService {
             existingFilm.setDirector(film.getDirector());
             existingFilm.setLaunchDate(film.getLaunchDate());
             // Luego, actualiza el film en el repositorio
-            repository.updateFilm(existingFilm);
+            validate=repository.updateFilm(existingFilm);
         }
+        return validate;
     }
 
-    public void deleteFilm(long id) {
-        repository.deleteFilm(id);
+    public boolean deleteFilm(long id) {
+        return repository.deleteFilm(id);
     }
 
     public List<Film> getFilmsByDirector(long directorId) {
@@ -62,6 +64,7 @@ public class FilmService {
     }
     public Film fromDTOToFilm(FilmDTO dto){
         Film film = component.getFilm();
+        film.setName(dto.getName());
         film.setGenre(dto.getGenre());
         film.setDirector(dto.getDirector());
         film.setLaunchDate(dto.getLaunchDate());

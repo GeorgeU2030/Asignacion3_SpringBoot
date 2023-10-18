@@ -15,8 +15,9 @@ public class DirectorRepository {
         directors = new ArrayList<Director>();
     }
 
-    public void addDirector(Director director){
+    public Director addDirector(Director director){
         directors.add(director);
+        return director;
     }
 
     public ArrayList<Director> getDirectors(){
@@ -34,17 +35,24 @@ public class DirectorRepository {
         return null;
     }
 
-    public void updateDirector(Director updatedDirector) {
+    public boolean updateDirector(Director updatedDirector) {
+        boolean validate=false;
         for (int i = 0; i < directors.size(); i++) {
             if (directors.get(i).getId() == updatedDirector.getId()) {
                 directors.set(i, updatedDirector);
+                validate=true;
                 break;
             }
         }
+        return  validate;
     }
 
-    public void deleteDirector(long id) {
-        directors.removeIf(director -> director.getId() == id);
+    public boolean deleteDirector(long id) {
+        boolean validate=false;
+        if (directors.removeIf(director -> director.getId() == id)){
+            validate=true;
+        }
+        return validate;
     }
 
 

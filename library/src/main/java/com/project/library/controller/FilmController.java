@@ -11,8 +11,8 @@ import com.project.library.DTO.FilmDTO;
 import com.project.library.model.Film;
 import com.project.library.service.FilmService;
 
-@Controller
-@RequestMapping("/film")
+@RestController
+@RequestMapping("/pelicula")
 public class FilmController {
 
     public final FilmService service;
@@ -22,32 +22,32 @@ public class FilmController {
         this.service = service;
     }
     
-    @GetMapping("/list")
+    @GetMapping("/peliculas")
     public List<Film> listFilms(){
         return service.listFilms();
     }
 
-    @GetMapping("/get/{id}")
-    public String filmDetails(@PathVariable long id){
+    @GetMapping("/pelicula/{id}")
+    public Film filmDetails(@PathVariable long id){
         return service.detailFilm(id);
     }
 
-    @PostMapping("/post")
-    public void createFilm(@RequestBody FilmDTO film){
-        service.createFilm(film);
+    @PostMapping("/pelicula")
+    public Film createFilm(@RequestBody FilmDTO film){
+        return service.createFilm(film);
     }
 
-    @PutMapping("/update/{id}")
-    public void updateFilm(@PathVariable long id, @RequestBody FilmDTO film){
-        service.updateFilm(id, film);
+    @PutMapping("/pelicula/{id}")
+    public boolean updateFilm(@PathVariable long id, @RequestBody FilmDTO film){
+        return service.updateFilm(id, film);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteFilm(@PathVariable long id){
-        service.deleteFilm(id);
+    @DeleteMapping("/pelicula/{id}")
+    public boolean deleteFilm(@PathVariable long id){
+        return service.deleteFilm(id);
     }
 
-    @GetMapping("/filterByDirector/{directorId}")
+    @GetMapping("/directores/{directorId}/peliculas")
     public List<Film> getFilmsByDirector(@PathVariable long directorId){
         return service.getFilmsByDirector(directorId);
     }

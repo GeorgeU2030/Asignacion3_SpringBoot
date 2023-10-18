@@ -11,7 +11,7 @@ import com.project.library.DTO.DirectorDTO;
 import com.project.library.model.Director;
 import com.project.library.service.DirectorService;
 
-@Controller
+@RestController
 @RequestMapping("/director")
 public class DirectorController {
 
@@ -22,28 +22,27 @@ public class DirectorController {
         this.service = service;
     }
     
-    @GetMapping("/list")
+    @GetMapping("/directores")
     public List<Director> listDirector(){
-        return new ArrayList<Director>();
+        return service.getAllDirectors();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/director/{id}")
     public Director directorDetails(@PathVariable long id) {
         return service.getDirectorById(id);
     }
 
-    @PostMapping("/post")
-    public void createDirector(@RequestBody DirectorDTO directorDTO) {
-        service.createDirector(directorDTO);
+    @PostMapping("/director")
+    public Director createDirector(@RequestBody DirectorDTO directorDTO) {return service.createDirector(directorDTO);
     }
 
-    @PutMapping("/update/{id}")
-    public void updateDirector(@PathVariable long id, @RequestBody DirectorDTO directorDTO) {
-        service.updateDirector(id, directorDTO);
+    @PutMapping("/director/{id}")
+    public boolean updateDirector(@PathVariable long id, @RequestBody DirectorDTO directorDTO) {
+        return service.updateDirector(id, directorDTO);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteDirector(@PathVariable long id) {
-        service.deleteDirector(id);
+    @DeleteMapping("/director/{id}")
+    public boolean deleteDirector(@PathVariable long id) {
+        return service.deleteDirector(id);
     }
 }
