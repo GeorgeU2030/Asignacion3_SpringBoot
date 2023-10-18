@@ -64,6 +64,7 @@ public class FilmService {
     }
     public Film fromDTOToFilm(FilmDTO dto){
         Film film = component.getFilm();
+        film.setName(dto.getName());
         film.setGenre(dto.getGenre());
         film.setDirector(dto.getDirector());
         film.setLaunchDate(dto.getLaunchDate());
