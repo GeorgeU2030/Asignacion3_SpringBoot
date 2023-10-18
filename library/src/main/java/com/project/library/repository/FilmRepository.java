@@ -16,8 +16,9 @@ public class FilmRepository {
         films = new ArrayList<Film>();
     }
 
-    public void addFilm(Film film){
+    public Film addFilm(Film film){
         films.add(film);
+        return film;
     }
 
     public ArrayList<Film> getFilms(){
@@ -35,17 +36,22 @@ public class FilmRepository {
         return null;
     }
 
-    public void updateFilm(Film updatedFilm) {
+    public boolean updateFilm(Film updatedFilm) {
+        boolean validate=false;
         for (int i = 0; i < films.size(); i++) {
             if (films.get(i).getId() == updatedFilm.getId()) {
                 films.set(i, updatedFilm);
+                validate=true;
                 break;
             }
         }
+        return validate;
     }
 
-    public void deleteFilm(long id) {
-        films.removeIf(film -> film.getId() == id);
+    public boolean deleteFilm(long id) {
+        boolean validate=false;
+        if(films.removeIf(film -> film.getId() == id)){validate=true;}
+        return validate;
     }
 
     public ArrayList<Film> findFilmsByDirectorId(long directorId) {
