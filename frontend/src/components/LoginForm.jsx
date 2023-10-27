@@ -30,6 +30,8 @@ const LoginForm = () => {
     console.log('Respuesta del servidor:', response.data);
     const token = response.data.token
     localStorage.setItem('token', token);
+    const username = formData.username
+    localStorage.setItem('user',username)
     navigate('/welcome')
     })
     .catch(error => {
@@ -44,7 +46,7 @@ const LoginForm = () => {
   return (
     <div className='bg-primary h-screen w-screen flex flex-col items-center'>
       <div className='mt-10 mb-16'>
-        <h1 className='text-white text-2xl'>Library Application</h1>
+        <h1 className='text-white text-2xl'>Films Application</h1>
       </div>
     <div className="login-form bg-gray-200 h-80 w-80 rounded-lg border-second border-2">
       <h2 className='font-semibold text-center mt-5 mb-5'>Iniciar Sesión</h2>
