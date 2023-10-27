@@ -22,11 +22,13 @@ const LoginForm = () => {
     e.preventDefault();
 
     axios.post('http://localhost:8080/auth', {
-    username: 'user',
-    password: '12345'
+    username: formData.username,
+    password: formData.password
     })
     .then(response => {
   console.log('Respuesta del servidor:', response.data);
+  const token = response.data.token
+  localStorage.setItem('token', token);
   navigate('/welcome')
     })
     .catch(error => {
