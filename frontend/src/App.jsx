@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div>
       {isTokenAvailable && (
-        <button onClick={handleLogout}>Cerrar Sesión</button>
+        <button className='bg-blue-900' onClick={handleLogout}>Cerrar Sesión</button>
       )}
     <BrowserRouter>
     <Routes>
