@@ -36,6 +36,10 @@ public class JwtAuthenticationController {
     @RequestMapping(value = "/auth", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
+
+        System.out.println("Nombre de usuario: " + authenticationRequest.getUsername());
+        System.out.println("Contraseña: " + authenticationRequest.getPassword());
+
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
         final UserDetails userDetails = userDetailsService
@@ -44,6 +48,7 @@ public class JwtAuthenticationController {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));
+
     }
 
     private void authenticate(String username, String password) throws Exception {
