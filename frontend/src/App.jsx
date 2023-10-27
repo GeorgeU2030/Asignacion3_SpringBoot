@@ -1,7 +1,9 @@
 import React from 'react'
 import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
 import LoginForm from './components/LoginForm'
-import Welcome from './components/Welcome'
+import Welcome from './pages/Welcome'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function isToken(){
   const tok = localStorage.getItem('token')
@@ -9,24 +11,10 @@ function isToken(){
   return tok !== null
 }
 
-
 const App = () => {
-
-  const isTokenAvailable = localStorage.getItem('token') !== null;
-
-  const handleLogout = () => {
-    // Elimina el token del Local Storage
-    localStorage.removeItem('token');
-
-    // Redirige al usuario a la página de inicio de sesión u otra página deseada
-    window.location.href = '/'; // Cambia '/login' a la ruta que prefieras
-  };
 
   return (
     <div>
-      {isTokenAvailable && (
-        <button className='bg-blue-900' onClick={handleLogout}>Cerrar Sesión</button>
-      )}
     <BrowserRouter>
     <Routes>
     <Route path='/' 
@@ -34,6 +22,7 @@ const App = () => {
     <Route path='/welcome' element={<Welcome></Welcome>}></Route>
     </Routes>
     </BrowserRouter>
+    <ToastContainer />
     </div>
   )
 }
