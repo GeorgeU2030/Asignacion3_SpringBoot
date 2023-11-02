@@ -1,9 +1,9 @@
 import React from 'react'
 import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
-import LoginForm from './components/LoginForm'
-import Welcome from './pages/Welcome'
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import RoutesC from './components/RoutesC';
 
 function isToken(){
   const tok = localStorage.getItem('token')
@@ -15,14 +15,7 @@ const App = () => {
 
   return (
     <div>
-    <BrowserRouter>
-    <Routes>
-    <Route path='/' 
-    element={isToken() ? <Navigate to='/welcome'></Navigate>:<LoginForm></LoginForm>}></Route>
-    <Route path='/welcome' element={<Welcome></Welcome>}></Route>
-    </Routes>
-    </BrowserRouter>
-    <ToastContainer />
+    <RoutesC></RoutesC>
     </div>
   )
 }
