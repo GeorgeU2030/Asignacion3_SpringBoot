@@ -5,11 +5,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RoutesC from './components/RoutesC';
 
-function isToken(){
-  const tok = localStorage.getItem('token')
-  console.log(tok)
-  return tok !== null
-}
 
 const App = () => {
 
