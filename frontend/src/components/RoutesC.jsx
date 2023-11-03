@@ -16,11 +16,13 @@ const ProtectedRoute = ({ element }) => {
   return isToken() ? element : <Navigate to="/login" />;
 };
 
+
 const RoutesC = () => {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<LoginForm></LoginForm>} />
+        <Route path='/' element={isToken() ? <Navigate to='/welcome'></Navigate>:<LoginForm></LoginForm>}></Route>
         <Route
           path="/*"
           element={
