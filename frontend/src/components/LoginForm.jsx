@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import { login } from '../config/api';
 import { toast } from 'react-toastify';
 
 const LoginForm = () => {
@@ -22,25 +22,22 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:8080/auth', {
-    username: formData.username,
-    password: formData.password
-    })
-    .then(response => {
-    console.log('Respuesta del servidor:', response.data);
-    const token = response.data.token
-    localStorage.setItem('token', token);
-    const username = formData.username
-    localStorage.setItem('user',username)
-    navigate('/welcome')
-    })
-    .catch(error => {
-    console.error('Error:', error);
-    toast.error('Credenciales incorrectas. Verifica que tus credenciales son válidas.', {
-      position: "top-center",
-      autoClose: 1000, 
-    });
-    });
+    
+    try {      
+      const result = await login(formData);
+      console.log('Respuesta del servidor:', result);
+      const token = result.token
+      localStorage.setItem('token', token);
+      const username = formData.username
+      localStorage.setItem('user',username)
+      navigate('/welcome')
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      toast.error('Credenciales incorrectas. Verifica que tus credenciales son válidas.', {
+        position: "top-center",
+        autoClose: 1000, 
+      });
+    }
   };
 
   return (
