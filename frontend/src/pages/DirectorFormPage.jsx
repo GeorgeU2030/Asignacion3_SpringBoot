@@ -91,17 +91,17 @@ const DirectorFormPage = () => {
             </h1>
             <form className='bg-third w-3/5 flex flex-col items-center rounded-lg' onSubmit={onSubmit}>
             <label htmlFor='name' className='px-5 py-5 font-semibold'>Name:</label>
-            <input type="text" className='w-4/5 mb-10 text-right rounded-md' {...register('name',{required:true})}/>
+            <input type="text" className='w-4/5 mb-10 text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('name',{required:true})}/>
             {params.id && 
             <label htmlFor='id' className='px-5 py-1 font-semibold'>Id:</label>}
             {params.id &&
-            <input type="text" className='w-4/5 mb-10 text-right rounded-md ' {...register('id',{required:true})} disabled={true}/>}
-            <button className={`py-2 px-10 bg-alter text-white rounded-lg font-semibold ${params.id ? 'my-2' : 'my-5'}`}>
+            <input type="text" className='w-4/5 mb-10 text-right rounded-md border-2 border-alter' {...register('id',{required:true})} disabled={true}/>}
+            <button className={`py-2 px-10 bg-alter text-white rounded-lg hover:bg-third hover:text-alter hover:border-2 hover:border-alter font-semibold ${params.id ? 'my-2' : 'my-5'}`}>
             {params.id ? 'Update' : 'Create'}
             </button>
             </form>
             {params.id &&
-            <button className='py-2 px-10 my-2 bg-red-800 text-white rounded-lg font-semibold'
+            <button className='py-2 px-10 my-2 bg-second hover:bg-alter text-white rounded-lg font-semibold border border-white'
             onClick={handleDelete}>DELETE</button>
             }
         </div>

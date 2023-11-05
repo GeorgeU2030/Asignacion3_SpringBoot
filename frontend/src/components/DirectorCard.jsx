@@ -10,7 +10,7 @@ const DirectorCard = ({director}) => {
     onClick={()=>{
         navigate('/director/'+director.id)
     }
-    } className='bg-alter text-white w-5/6 rounded-lg py-6 my-5 cursor-pointer flex flex-col items-center text-2xl'>
+    } className='bg-alter text-white w-5/6 rounded-lg py-6 my-5 cursor-pointer flex flex-col items-center text-2xl hover:bg-third hover:text-alter font-semibold'>
         <h1>{director.name}</h1>   
     </div>
   )
