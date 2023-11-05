@@ -55,7 +55,6 @@ const DirectorFormPage = () => {
         const idlong = parseInt(idstring, 10); 
         getDirector(idlong)
         .then((data) => {
-            console.log(data.name)
         setValue('name',data.name),
         setValue('id',data.id)});
       }

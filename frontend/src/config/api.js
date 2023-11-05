@@ -56,13 +56,11 @@ export const createDirector = async (director) => {
 export const getDirector = async (id) => {
   try {
     const token = getToken();
-    console.log(id)
     const response = await backend.get(`/director/director/${id}`, {
       headers: {
         'Authorization': token,
       },
     })
-    console.log("response"+response.data)
     return response.data;
   }catch(error){
     throw error

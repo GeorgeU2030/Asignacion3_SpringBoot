@@ -29,7 +29,6 @@ public class DirectorController {
 
     @GetMapping("/director/{id}")
     public Director directorDetails(@PathVariable long id) {
-        System.out.println(service.getDirectorById(id));
         return service.getDirectorById(id);
     }
 
