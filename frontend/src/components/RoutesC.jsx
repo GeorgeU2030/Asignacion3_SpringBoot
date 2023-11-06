@@ -7,6 +7,7 @@ import LoginForm from './LoginForm';
 import Welcome from '../pages/Welcome';
 import FilmPage from '../pages/FilmPage';
 import DirectorPage from '../pages/DirectorPage';
+import DirectorFormPage from '../pages/DirectorFormPage';
 
 function isToken(){
   const tok = localStorage.getItem('token')
@@ -32,6 +33,8 @@ const RoutesC = () => {
                 <Route path="/welcome" element={<Welcome></Welcome>} />
                 <Route path="/films" element={<FilmPage></FilmPage>} />
                 <Route path="/directors" element={<DirectorPage></DirectorPage>} />
+                <Route path="/newdirector" element={<DirectorFormPage></DirectorFormPage>} />
+                <Route path='/director/:id' element={<DirectorFormPage></DirectorFormPage>} />
               </Routes>}
             />
           }

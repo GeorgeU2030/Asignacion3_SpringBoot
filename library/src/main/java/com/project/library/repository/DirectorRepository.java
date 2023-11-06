@@ -25,10 +25,8 @@ public class DirectorRepository {
     }
 
     public Director getDirectorById(long id){
-        Iterator<Director> iterador = directors.iterator();
-        if(iterador.hasNext()){
-            Director director = (Director) iterador.next();
-            if(id == director.getId()){
+        for (Director director : directors) {
+            if (id == director.getId()) {
                 return director;
             }
         }
