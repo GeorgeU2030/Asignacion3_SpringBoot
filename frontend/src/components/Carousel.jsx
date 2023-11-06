@@ -66,13 +66,13 @@ export default class Carousel extends Component {
     ];
 
     return (
-      <div className="bg-second h-5/6 w-full flex flex-col items-center">
-        <h2 className="text-center py-4 text-3xl text-white font-bold">
+      <div className="bg-third h-5/6 w-full flex flex-col items-center">
+        <h2 className="text-center py-4 text-3xl text-black font-bold">
           Explore the Best Movies of 2023
         </h2>
         <Slider {...settings} className="w-5/6">
           {movies.map((movie, index) => (
-            <div key={index} className="h-[30rem] bg-third shadow-lg rounded-lg p-4">
+            <div key={index} className="h-[30rem] bg-primary shadow-lg rounded-lg p-4">
               <MovieMenu {...movie} />
             </div>
           ))}
