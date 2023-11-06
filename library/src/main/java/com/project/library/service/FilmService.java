@@ -15,11 +15,10 @@ import com.project.library.repository.FilmRepository;
 
 @Service
 public class FilmService {
-    
-    private final FilmComponent component;
-    private final FilmRepository repository;
 
     private final DirectorService directorService;
+    private final FilmComponent component;
+    private final FilmRepository repository;
 
     @Autowired
     public FilmService(FilmComponent component, FilmRepository repository, DirectorService directorService){
@@ -41,7 +40,7 @@ public class FilmService {
         List<Film> films = repository.getFilms();
 
         return films.stream()
-                .map(this::fromFilmToDTO)
+                .map(film -> fromFilmToDTO(film))
                 .collect(Collectors.toList());
     }
 
@@ -80,24 +79,20 @@ public class FilmService {
         Film film = component.getFilm();
         film.setName(dto.getName());
         film.setGenre(dto.getGenre());
-        if(directorService.getDirectorByName(dto.getDirector())!= null){
+        if(directorService.getDirectorByName(dto.getDirector()) != null){
             film.setDirector(directorService.getDirectorByName(dto.getDirector()));
         }else{
-            Director director = directorService.createDirector(new DirectorDTO(dto.getDirector()));
-            film.setDirector(director);
+            film.setDirector(directorService.createDirector(new DirectorDTO(dto.getDirector())));
         }
-
         film.setLaunchDate(dto.getLaunchDate());
         return film;
     }
 
     public FilmDTO fromFilmToDTO(Film film){
-        return new FilmDTO(
-                film.getName(),
-                film.getGenre(),
-                film.getDirector().getName(),
-                film.getLaunchDate()
+        FilmDTO filmDTO = new FilmDTO(
+                film.getName(), film.getGenre(), film.getDirector().getName(),film.getLaunchDate()
         );
+        filmDTO.setId(film.getId());
+        return filmDTO;
     }
-
 }

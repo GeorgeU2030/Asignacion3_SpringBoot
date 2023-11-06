@@ -5,7 +5,8 @@ import com.project.library.model.Director;
 import java.util.Date;
 
 public class FilmDTO {
-    
+
+    private long id = 0;
     private String name;
     private String genre;
     private String director;
@@ -52,5 +53,13 @@ public class FilmDTO {
 
     public Date getLaunchDate() {
         return launchDate;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
