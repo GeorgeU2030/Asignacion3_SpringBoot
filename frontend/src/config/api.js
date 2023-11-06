@@ -94,3 +94,59 @@ export const deleteDirector = async (id) => {
     throw error
   }
 }
+
+export const getfilms = async () => {
+  try {
+      const token = getToken();
+      const response = await backend.get('/pelicula/peliculas', {
+        headers: {
+          'Authorization': token,
+        },
+      })
+      return response.data;
+  }catch(error){
+      throw error
+  }
+}
+
+export const getFilm = async (id) => {
+  try {
+    const token = getToken();
+    const response = await backend.get(`/pelicula/pelicula/${id}`, {
+      headers: {
+        'Authorization': token,
+      },
+    })
+    return response.data;
+  }catch(error){
+    throw error
+  }
+}
+
+export const deleteFilm = async (id) => {
+  try {
+    const token = getToken();
+    const response = await backend.delete(`/pelicula/pelicula/${id}`, {
+      headers: {
+        'Authorization': token,
+      },
+    })
+    return response.data;
+  }catch(error){
+    throw error
+  }
+}
+
+export const updateFilm = async (id,film) => {
+  try {
+    const token = getToken();
+    const response = await backend.put(`/pelicula/pelicula/${id}`,film, {
+      headers: {
+        'Authorization': token,
+      },
+    })
+    return response.data;
+  }catch(error){
+    throw error
+  }
+}

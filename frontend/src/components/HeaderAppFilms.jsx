@@ -1,7 +1,7 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
 
-const HeaderApp = () => {
+const HeaderAppFilms = () => {
 
   const navigate = useNavigate()
 
@@ -15,7 +15,7 @@ const HeaderApp = () => {
     navigate('/welcome')
   }
 
-  const createdirector = () => {
+  const createFilm = () => {
     navigate('/newdirector')
   }
 
@@ -25,7 +25,7 @@ const HeaderApp = () => {
       <div className='flex justify-between items-center'>
         <h1 className='ml-16 mt-4 text-white text-2xl cursor-pointer' onClick={backMenu}>Menu</h1>
         <div className='text-end mr-16 mt-4'>
-        <button onClick={createdirector} className='bg-second py-2 px-4 text-white rounded-md hover:bg-alter mr-5'>Add Director</button>
+        <button onClick={createFilm} className='bg-second py-2 px-4 text-white rounded-md hover:bg-alter mr-5'>Add Film</button>
 
         <button onClick={handleLogout} className='bg-second py-2 px-4 text-white rounded-md hover:bg-alter '>Cerrar Sesion</button>
         </div>
@@ -35,4 +35,4 @@ const HeaderApp = () => {
   )
 }
 
-export default HeaderApp
+export default HeaderAppFilms
