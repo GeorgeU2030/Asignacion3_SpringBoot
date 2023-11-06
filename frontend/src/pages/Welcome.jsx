@@ -2,6 +2,7 @@ import React from 'react'
 import Nav from '../components/Nav';
 import Carrusel from '../components/Carousel';
 import Carousel from '../components/Carousel';
+import Footer from '../components/Footer';
 
 const Welcome = () => {
 
@@ -13,9 +14,10 @@ const Welcome = () => {
   };
 
   return (
-    <div>
+    <div style={{ height: '100vh' }}>
         <Nav></Nav>
-        <Carousel></Carousel> 
+        <Carousel></Carousel>
+        <Footer></Footer> 
     </div>
   )
 }
