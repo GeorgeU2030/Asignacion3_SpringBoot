@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import { useForm} from 'react-hook-form'
-import { createDirector, deleteFilm, getFilm,updateFilm } from '../config/api'
+import { createFilm, deleteFilm, getFilm,updateFilm } from '../config/api'
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -75,13 +75,19 @@ const FilmFormPage = () => {
             position: "top-center",
             autoClose: 1000,
         })
-    }
+    }else{
+      await createFilm(data)
+      toast.success('Director has been created succesfully',{
+          position: "top-center",
+          autoClose: 1000,
+      })
+  }
     navigate('/films')
   })
     return (
     
-        <div className='h-screen w-screen bg-primary flex justify-center'>
-            <div className={`w-3/5 flex flex-col items-center bg-second mt-20 rounded-lg ${params.id ? 'h-4/5' : 'h-3/5'}`}>
+        <div className='w-screen bg-primary flex justify-center'>
+            <div className={`w-3/5 flex flex-col items-center bg-second mt-20 rounded-lg ${params.id ? 'h-4/5' : 'h-5/5'}`}>
                 <h1 className='py-10 font-bold text-white text-xl'>
                 {params.id ? 'The Film' : 'New Film'}
                 </h1>

@@ -150,3 +150,17 @@ export const updateFilm = async (id,film) => {
     throw error
   }
 }
+
+export const createFilm = async (film) => {
+  try {
+    const token = getToken();
+    const response = await backend.post('/pelicula/pelicula', film, {
+      headers: {
+        'Authorization': token,
+      },
+    })
+    return response.data;
+  }catch(error){
+    throw error
+  }
+}

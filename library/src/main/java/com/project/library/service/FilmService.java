@@ -1,7 +1,10 @@
 package com.project.library.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.project.library.DTO.DirectorDTO;
+import com.project.library.model.Director;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +19,13 @@ public class FilmService {
     private final FilmComponent component;
     private final FilmRepository repository;
 
+    private final DirectorService directorService;
+
     @Autowired
-    public FilmService(FilmComponent component, FilmRepository repository){
+    public FilmService(FilmComponent component, FilmRepository repository, DirectorService directorService){
         this.component = component;
         this.repository = repository;
+        this.directorService = directorService;
     }
 
     public Film createFilm(FilmDTO dto){
@@ -29,6 +35,14 @@ public class FilmService {
 
     public List<Film> listFilms(){
         return repository.getFilms();
+    }
+
+    public List<FilmDTO> listFilmDTO() {
+        List<Film> films = repository.getFilms();
+
+        return films.stream()
+                .map(this::fromFilmToDTO)
+                .collect(Collectors.toList());
     }
 
     public Film detailFilm(long id){
@@ -66,9 +80,24 @@ public class FilmService {
         Film film = component.getFilm();
         film.setName(dto.getName());
         film.setGenre(dto.getGenre());
-        film.setDirector(dto.getDirector());
+        if(directorService.getDirectorByName(dto.getDirector())!= null){
+            film.setDirector(directorService.getDirectorByName(dto.getDirector()));
+        }else{
+            Director director = directorService.createDirector(new DirectorDTO(dto.getDirector()));
+            film.setDirector(director);
+        }
+
         film.setLaunchDate(dto.getLaunchDate());
         return film;
+    }
+
+    public FilmDTO fromFilmToDTO(Film film){
+        return new FilmDTO(
+                film.getName(),
+                film.getGenre(),
+                film.getDirector().getName(),
+                film.getLaunchDate()
+        );
     }
 
 }

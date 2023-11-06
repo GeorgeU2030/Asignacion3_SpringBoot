@@ -33,6 +33,15 @@ public class DirectorRepository {
         return null;
     }
 
+    public Director getDirectorByName(String name){
+        for (Director director : directors) {
+            if (name == director.getName()) {
+                return director;
+            }
+        }
+        return null;
+    }
+
     public boolean updateDirector(Director updatedDirector) {
         boolean validate=false;
         for (int i = 0; i < directors.size(); i++) {

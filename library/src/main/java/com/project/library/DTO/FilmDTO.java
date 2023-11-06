@@ -8,14 +8,14 @@ public class FilmDTO {
     
     private String name;
     private String genre;
-    private Director director;
+    private String director;
     private Date launchDate;
 
     public FilmDTO(){
 
     }
 
-    public FilmDTO(String name, String genre, Director director, Date launchDate){
+    public FilmDTO(String name, String genre, String director, Date launchDate){
         this.name = name;
         this.genre = genre;
         this.director = director;
@@ -38,11 +38,11 @@ public class FilmDTO {
         return genre;
     }
 
-    public void setDirector(Director director) {
+    public void setDirector(String director) {
         this.director = director;
     }
 
-    public Director getDirector() {
+    public String getDirector() {
         return director;
     }
 

@@ -16,7 +16,7 @@ const HeaderAppFilms = () => {
   }
 
   const createFilm = () => {
-    navigate('/newdirector')
+    navigate('/newFilm')
   }
 
   return (
