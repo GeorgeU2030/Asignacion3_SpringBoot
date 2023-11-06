@@ -1,8 +1,15 @@
 import React from 'react'
+import HeaderApp from '../components/HeaderApp'
+import FilmList from '../components/FilmList'
+import Footer from '../components/Footer'
 
 const FilmPage = () => {
   return (
-    <div>FilmPage</div>
+    <div>
+      <HeaderApp headerTitle={"ListFilms"}></HeaderApp>
+      <FilmList></FilmList>
+      <Footer></Footer>
+    </div>
   )
 }
 

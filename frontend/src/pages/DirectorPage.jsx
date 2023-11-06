@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 const DirectorPage = () => {
   return (
     <div>
-        <HeaderApp headerTitle={"ListDirector"}></HeaderApp>
+        <HeaderApp headerTitle={"ListDirectors"}></HeaderApp>
         <DirectorList></DirectorList>
         <Footer></Footer>
     </div>

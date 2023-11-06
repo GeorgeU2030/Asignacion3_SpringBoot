@@ -24,14 +24,14 @@ const DirectorFormPage = () => {
             performAction();
           }}
         >
-        Aceptar
+        Accept
         </button>
         <button className='border-2 bg-alter rounded-lg text-white px-5 py-1'
           onClick={() => {
             toast.dismiss();
           }}
         >
-        Cancelar
+        Cancel
         </button>
       </div>
     );
