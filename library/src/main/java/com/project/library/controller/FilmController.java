@@ -28,7 +28,7 @@ public class FilmController {
     }
 
     @GetMapping("/pelicula/{id}")
-    public Film filmDetails(@PathVariable long id){
+    public FilmDTO filmDetails(@PathVariable long id){
         return service.detailFilm(id);
     }
 

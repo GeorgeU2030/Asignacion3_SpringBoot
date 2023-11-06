@@ -44,10 +44,10 @@ public class FilmService {
                 .collect(Collectors.toList());
     }
 
-    public Film detailFilm(long id){
+    public FilmDTO detailFilm(long id){
         Film film = repository.getFilmById(id);
         if(film != null){
-            return film;
+            return fromFilmToDTO(film);
         }
         return null;
     }
