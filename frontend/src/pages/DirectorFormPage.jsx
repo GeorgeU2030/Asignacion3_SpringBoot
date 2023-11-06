@@ -4,6 +4,8 @@ import { createDirector, getDirector, updateDirector, deleteDirector } from '../
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import HeaderApp from '../components/HeaderApp';
+import Footer from '../components/Footer';
 
 const DirectorFormPage = () => {
 
@@ -83,29 +85,30 @@ const DirectorFormPage = () => {
   })
 
   return (
-    
-    <div className='h-screen w-screen bg-primary flex justify-center'>
-        <div className={`w-3/5 flex flex-col items-center bg-second mt-20 rounded-lg ${params.id ? 'h-4/5' : 'h-3/5'}`}>
-            <h1 className='py-10 font-bold text-white text-xl'>
-            {params.id ? 'The Director' : 'New Director'}
-            </h1>
-            <form className='bg-third w-3/5 flex flex-col items-center rounded-lg' onSubmit={onSubmit}>
-            <label htmlFor='name' className='px-5 py-5 font-semibold'>Name:</label>
-            <input type="text" className='w-4/5 mb-10 text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('name',{required:true})}/>
-            {params.id && 
+    <><HeaderApp headerTitle={'ReadDirector'}></HeaderApp>
+    <div className='h-screen w-screen bg-third flex justify-center'>
+      <div className={`w-3/5 flex flex-col items-center bg-primary mt-20 rounded-lg ${params.id ? 'h-4/5' : 'h-3/5'}`}>
+        <h1 className='py-10 font-bold text-white text-xl'>
+          {params.id ? 'The Director' : 'New Director'}
+        </h1>
+        <form className='bg-third w-3/5 flex flex-col items-center rounded-lg' onSubmit={onSubmit}>
+          <label htmlFor='name' className='px-5 py-5 font-semibold'>Name:</label>
+          <input type="text" className='w-4/5 mb-10 text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('name', { required: true })} />
+          {params.id &&
             <label htmlFor='id' className='px-5 py-1 font-semibold'>Id:</label>}
-            {params.id &&
-            <input type="text" className='w-4/5 mb-10 text-right rounded-md border-2 border-alter' {...register('id',{required:true})} disabled={true}/>}
-            <button className={`py-2 px-10 bg-alter text-white rounded-lg hover:bg-third hover:text-alter hover:border-2 hover:border-alter font-semibold ${params.id ? 'my-2' : 'my-5'}`}>
+          {params.id &&
+            <input type="text" className='w-4/5 mb-10 text-right rounded-md border-2 border-alter' {...register('id', { required: true })} disabled={true} />}
+          <button className={`py-2 px-10 bg-alter text-white rounded-lg hover:bg-third hover:text-alter hover:border-2 hover:border-alter font-semibold ${params.id ? 'my-2' : 'my-5'}`}>
             {params.id ? 'Update' : 'Create'}
-            </button>
-            </form>
-            {params.id &&
-            <button className='py-2 px-10 my-2 bg-second hover:bg-alter text-white rounded-lg font-semibold border border-white'
-            onClick={handleDelete}>DELETE</button>
-            }
-        </div>
+          </button>
+        </form>
+        {params.id &&
+          <button className='py-2 px-10 my-2 bg-second text-white hover:bg-white hover:text-black rounded-lg font-semibold border border-black'
+            onClick={handleDelete}>DELETE</button>}
+      </div>
     </div>
+    <Footer></Footer>
+    </>
     
   )
 }
