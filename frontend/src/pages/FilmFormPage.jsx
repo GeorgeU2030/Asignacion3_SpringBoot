@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import { useForm} from 'react-hook-form'
-import { createDirector, getDirector, updateDirector, deleteDirector, deleteFilm, getFilm } from '../config/api'
+import { createDirector, deleteFilm, getFilm,updateFilm } from '../config/api'
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -70,7 +70,7 @@ const FilmFormPage = () => {
     if(params.id){
         const idstring = params.id; 
         const idlong = parseInt(idstring, 10);
-        await updateDirector(idlong,data)
+        await updateFilm(idlong,data)
         toast.success('Film updated succesfully',{
             position: "top-center",
             autoClose: 1000,
