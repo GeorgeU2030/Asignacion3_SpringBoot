@@ -35,7 +35,7 @@ public class DirectorRepository {
 
     public Director getDirectorByName(String name){
         for (Director director : directors) {
-            if (name == director.getName()) {
+            if (director.getName().equalsIgnoreCase(name)) {
                 return director;
             }
         }

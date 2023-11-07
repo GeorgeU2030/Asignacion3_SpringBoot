@@ -79,10 +79,11 @@ public class FilmService {
         Film film = component.getFilm();
         film.setName(dto.getName());
         film.setGenre(dto.getGenre());
-        if(directorService.getDirectorByName(dto.getDirector()) != null){
-            film.setDirector(directorService.getDirectorByName(dto.getDirector()));
-        }else{
+        Director director = directorService.getDirectorByName(dto.getDirector());
+        if(director == null){
             film.setDirector(directorService.createDirector(new DirectorDTO(dto.getDirector())));
+        }else{
+            film.setDirector(director);
         }
         film.setLaunchDate(dto.getLaunchDate());
         return film;
