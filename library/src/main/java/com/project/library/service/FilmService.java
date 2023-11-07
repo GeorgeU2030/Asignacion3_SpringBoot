@@ -1,7 +1,10 @@
 package com.project.library.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.project.library.DTO.DirectorDTO;
+import com.project.library.model.Director;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +15,16 @@ import com.project.library.repository.FilmRepository;
 
 @Service
 public class FilmService {
-    
+
+    private final DirectorService directorService;
     private final FilmComponent component;
     private final FilmRepository repository;
 
     @Autowired
-    public FilmService(FilmComponent component, FilmRepository repository){
+    public FilmService(FilmComponent component, FilmRepository repository, DirectorService directorService){
         this.component = component;
         this.repository = repository;
+        this.directorService = directorService;
     }
 
     public Film createFilm(FilmDTO dto){
@@ -31,10 +36,18 @@ public class FilmService {
         return repository.getFilms();
     }
 
-    public Film detailFilm(long id){
+    public List<FilmDTO> listFilmDTO() {
+        List<Film> films = repository.getFilms();
+
+        return films.stream()
+                .map(film -> fromFilmToDTO(film))
+                .collect(Collectors.toList());
+    }
+
+    public FilmDTO detailFilm(long id){
         Film film = repository.getFilmById(id);
         if(film != null){
-            return film;
+            return fromFilmToDTO(film);
         }
         return null;
     }
@@ -66,9 +79,20 @@ public class FilmService {
         Film film = component.getFilm();
         film.setName(dto.getName());
         film.setGenre(dto.getGenre());
-        film.setDirector(dto.getDirector());
+        if(directorService.getDirectorByName(dto.getDirector()) != null){
+            film.setDirector(directorService.getDirectorByName(dto.getDirector()));
+        }else{
+            film.setDirector(directorService.createDirector(new DirectorDTO(dto.getDirector())));
+        }
         film.setLaunchDate(dto.getLaunchDate());
         return film;
     }
 
+    public FilmDTO fromFilmToDTO(Film film){
+        FilmDTO filmDTO = new FilmDTO(
+                film.getName(), film.getGenre(), film.getDirector().getName(),film.getLaunchDate()
+        );
+        filmDTO.setId(film.getId());
+        return filmDTO;
+    }
 }

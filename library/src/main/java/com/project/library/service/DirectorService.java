@@ -35,6 +35,10 @@ public class DirectorService {
         return directorRepository.getDirectorById(id);
     }
 
+    public Director getDirectorByName(String name) {
+        return directorRepository.getDirectorByName(name);
+    }
+
     public boolean updateDirector(long id, DirectorDTO directorDTO) {
         boolean validate=false;
         Director director=fromDTOToDirector(directorDTO);

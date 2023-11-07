@@ -89,8 +89,8 @@ const FilmFormPage = () => {
     return (
       <>
         <HeaderApp headerTitle={"ReadFilm"}></HeaderApp>
-        <div className='h-screen w-screen bg-primary flex justify-center'>
-            <div className={`w-3/5 flex flex-col items-center bg-second mt-20 rounded-lg ${params.id ? 'h-4/5' : 'h-4/5'}`}>
+        <div className='h-screen w-screen bg-third flex justify-center'>
+            <div className={`w-3/5 flex flex-col items-center bg-primary mt-20 rounded-lg ${params.id ? 'h-4/5' : 'h-4/5'}`}>
                 <h1 className='py-10 font-bold text-white text-xl'>
                 {params.id ? 'The Film' : 'New Film'}
                 </h1>

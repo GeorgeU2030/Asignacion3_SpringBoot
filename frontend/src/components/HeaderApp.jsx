@@ -68,6 +68,13 @@ const HeaderApp = ({ headerTitle }) => {
             {headerTitle === 'ListDirectors' && (
               <>
                 <button
+                  onClick={backFilms}
+                  className='bg-alter py-2 px-4 text-white rounded-md hover:bg-alter mr-5 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105'
+                >
+                  Movies
+                </button>
+
+                <button
                   onClick={createdirector}
                   className='bg-alter py-2 px-4 text-white rounded-md hover:bg-alter mr-5 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105'
                 >
@@ -83,6 +90,12 @@ const HeaderApp = ({ headerTitle }) => {
             )}
             {headerTitle === 'ListFilms' && (
               <>
+              <button
+                  onClick={backDirectors}
+                  className='bg-alter py-2 px-4 text-white rounded-md hover:bg-alter mr-5 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105'
+                >
+                  Directors
+                </button>
                 <button
                   onClick={createFilm}
                   className='bg-alter py-2 px-4 text-white rounded-md hover:bg-alter mr-5 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105'

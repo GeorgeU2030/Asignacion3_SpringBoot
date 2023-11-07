@@ -22,12 +22,14 @@ const FilmList = () => {
         <div className='h-screen w-screen bg-third flex flex-col items-center'>
           <h1 className='text-2xl text-black font-bold py-5'>Your Films</h1>
         <div className='bg-second border-2 border-second w-5/6 rounded-lg overflow-auto film-list-container'>
+          
         {loading ? (
           <div className='loading-container'>
             <div className='loader'></div>
           </div>
         ) :films.length > 0 ? (
       <div className='grid grid-cols-1 w-full ml-20 film-card-list'>
+        <div className='grid grid-cols-3 flex flex-col items-center'><h1 className='text-2xl text-white py-5' >Movie</h1> <h1 className='text-2xl text-white py-5'>Genre</h1> <h1 className='text-2xl text-white py-5'>Director</h1></div> 
         {films.map((film) => (
           <FilmCard film={film} key={film.id} />
         ))}

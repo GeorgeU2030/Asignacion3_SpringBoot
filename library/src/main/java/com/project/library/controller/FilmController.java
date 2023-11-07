@@ -23,12 +23,12 @@ public class FilmController {
     }
     
     @GetMapping("/peliculas")
-    public List<Film> listFilms(){
-        return service.listFilms();
+    public List<FilmDTO> listFilms(){
+        return service.listFilmDTO();
     }
 
     @GetMapping("/pelicula/{id}")
-    public Film filmDetails(@PathVariable long id){
+    public FilmDTO filmDetails(@PathVariable long id){
         return service.detailFilm(id);
     }
 
