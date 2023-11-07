@@ -37,6 +37,7 @@ const RoutesC = () => {
                 <Route path="/film/:id" element={<FilmFormPage></FilmFormPage>} />
                 <Route path="/directors" element={<DirectorPage></DirectorPage>} />
                 <Route path="/newdirector" element={<DirectorFormPage></DirectorFormPage>} />
+                <Route path="/newfilm" element={<FilmFormPage></FilmFormPage>} />
                 <Route path='/director/:id' element={<DirectorFormPage></DirectorFormPage>} />
               </Routes>}
             />

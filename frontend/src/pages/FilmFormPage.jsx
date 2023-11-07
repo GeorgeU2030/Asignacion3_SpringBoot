@@ -4,6 +4,8 @@ import { createFilm, deleteFilm, getFilm,updateFilm } from '../config/api'
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import HeaderApp from '../components/HeaderApp';
+import Footer from '../components/Footer';
 
 const FilmFormPage = () => {
 
@@ -75,35 +77,38 @@ const FilmFormPage = () => {
             position: "top-center",
             autoClose: 1000,
         })
-    }else{
-      await createFilm(data)
-      toast.success('Director has been created succesfully',{
-          position: "top-center",
-          autoClose: 1000,
-      })
-  }
+      }else{
+        await createFilm(data)
+        toast.success('Film has been created succesfully',{
+            position: "top-center",
+            autoClose: 1000,
+        })
+    }
     navigate('/films')
   })
     return (
-    
-        <div className='w-screen bg-primary flex justify-center'>
-            <div className={`w-3/5 flex flex-col items-center bg-second mt-20 rounded-lg ${params.id ? 'h-4/5' : 'h-5/5'}`}>
+      <>
+        <HeaderApp headerTitle={"ReadFilm"}></HeaderApp>
+        <div className='h-screen w-screen bg-third flex justify-center'>
+            <div className={`w-3/5 flex flex-col items-center bg-primary mt-20 rounded-lg ${params.id ? 'h-4/5' : 'h-4/5'}`}>
                 <h1 className='py-10 font-bold text-white text-xl'>
                 {params.id ? 'The Film' : 'New Film'}
                 </h1>
-                <form className='bg-third w-3/5 flex flex-col items-center rounded-lg' onSubmit={onSubmit}>
+                <form className='bg-third  flex flex-col items-center rounded-lg' onSubmit={onSubmit}>
+                <div className='grid grid-cols-2 '>
                 <label htmlFor='name' className='px-5 py-5 font-semibold'>Name:</label>
-                <input type="text" className='w-4/5 mb-10 text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('name',{required:true})}/>
+                <input type="text" className='w-4/5 mt-5 mb-5 text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('name',{required:true})}/>
                 <label htmlFor='genre' className='px-5 py-5 font-semibold'>Genre:</label>
-                <input type="text" className='w-4/5 mb-10 text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('genre',{required:true})}/>
+                <input type="text" className='w-4/5 mt-5 mb-5  text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('genre',{required:true})}/>
                 <label htmlFor='director' className='px-5 py-5 font-semibold'>Director:</label>
-                <input type="text" className='w-4/5 mb-10 text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('director',{required:true})}/>
+                <input type="text" className='w-4/5 mt-5 mb-5  text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('director',{required:true})}/>
                 <label htmlFor='launchDate' className='px-5 py-5 font-semibold'>Launch date:</label>
-                <input type="date" className='w-4/5 mb-10 text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('launchDate',{required:true})}/>
+                <input type="date" className='w-4/5 mt-5 mb-5  text-right rounded-md border-alter border-2 hover:border-2 hover:border-alter' {...register('launchDate',{required:true})}/>
                 {params.id && 
                 <label htmlFor='id' className='px-5 py-1 font-semibold'>Id:</label>}
                 {params.id &&
-                <input type="text" className='w-4/5 mb-10 text-right rounded-md border-2 border-alter' {...register('id',{required:true})} disabled={true}/>}
+                <input type="text" className='w-4/5 mt-5 mb-5  text-right rounded-md border-2 border-alter' {...register('id',{required:true})} disabled={true}/>}
+                </div>
                 <button className={`py-2 px-10 bg-alter text-white rounded-lg hover:bg-third hover:text-alter hover:border-2 hover:border-alter font-semibold ${params.id ? 'my-2' : 'my-5'}`}>
                 {params.id ? 'Update' : 'Create'}
                 </button>
@@ -114,7 +119,8 @@ const FilmFormPage = () => {
                 }
             </div>
         </div>
-        
+        <Footer></Footer>
+        </>
       )
 }
 

@@ -1,5 +1,6 @@
 package com.project.library.repository;
 
+import com.project.library.DTO.DirectorDTO;
 import com.project.library.model.Director;
 import com.project.library.model.Film;
 import org.springframework.stereotype.Repository;
@@ -16,7 +17,9 @@ public class DirectorRepository {
     }
 
     public Director addDirector(Director director){
+        if(getDirectorByName(director.getName())==null){
         directors.add(director);
+        }
         return director;
     }
 

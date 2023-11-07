@@ -12,11 +12,11 @@ const MovieMenu = ({imageposter, urlyoutube, name, genre, director, date}) => {
         </div>
         <div className='w-2/3 flex flex-col items-center mt-10'>
          <ReactPlayer url={urlyoutube} width="80%" height="80%"/>
-         <h1 className='mt-2 font-semibold text-black text-2xl'>{name}</h1>
+         <h1 className='mt-2 font-semibold text-third text-2xl'>{name}</h1>
           <div className='flex mt-2'>
-            <h1 className='mr-4 text-black font-semibold'>{director}</h1>
-            <h1 className='mr-4 text-black font-semibold'>{genre}</h1>
-            <h1 className='mr-4 text-black font-semibold'>{date}</h1>
+            <h1 className='mr-4 text-third font-semibold'>{director}</h1>
+            <h1 className='mr-4 text-third font-semibold'>{genre}</h1>
+            <h1 className='mr-4 text-third font-semibold'>{date}</h1>
           </div>
         </div>
     </section>

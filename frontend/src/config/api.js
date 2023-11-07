@@ -95,6 +95,21 @@ export const deleteDirector = async (id) => {
   }
 }
 
+export const createFilm = async (film) => {
+  try {
+    const token = getToken();
+    const response = await backend.post('/pelicula/pelicula', film, {
+      headers: {
+        'Authorization': token,
+      },
+    })
+    return response.data;
+  }catch(error){
+    throw error
+  }
+}
+
+
 export const getfilms = async () => {
   try {
       const token = getToken();
@@ -151,16 +166,3 @@ export const updateFilm = async (id,film) => {
   }
 }
 
-export const createFilm = async (film) => {
-  try {
-    const token = getToken();
-    const response = await backend.post('/pelicula/pelicula', film, {
-      headers: {
-        'Authorization': token,
-      },
-    })
-    return response.data;
-  }catch(error){
-    throw error
-  }
-}
