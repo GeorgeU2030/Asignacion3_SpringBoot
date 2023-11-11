@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import org.springframework.stereotype.Repository;
 
+import com.project.library.model.Director;
 import com.project.library.model.Film;
 
 @Repository
@@ -26,11 +27,9 @@ public class FilmRepository {
     }
 
     public Film getFilmById(long id){
-        Iterator<Film> iterador = films.iterator();
-        if(iterador.hasNext()){
-            Film film = (Film) iterador.next();
-            if(id == film.getId()){
-                return film;
+        for (Film director : films) {
+            if (id == director.getId()) {
+                return director;
             }
         }
         return null;
