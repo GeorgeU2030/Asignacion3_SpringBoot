@@ -2,6 +2,7 @@ package com.project.library.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class DirectorController {
     }
 
     @GetMapping("/director/{id}")
-    public Director directorDetails(@PathVariable long id) {
+    public Optional<Director> directorDetails(@PathVariable long id) {
         return service.getDirectorById(id);
     }
 

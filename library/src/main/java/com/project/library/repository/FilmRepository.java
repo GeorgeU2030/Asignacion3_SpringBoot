@@ -1,68 +1,13 @@
 package com.project.library.repository;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.project.library.model.Director;
 import com.project.library.model.Film;
 
+import java.util.List;
+
 @Repository
-public class FilmRepository {
-
-    ArrayList<Film> films;
-
-    public FilmRepository(){
-        films = new ArrayList<Film>();
-    }
-
-    public Film addFilm(Film film){
-        films.add(film);
-        return film;
-    }
-
-    public ArrayList<Film> getFilms(){
-        return films;
-    }
-
-    public Film getFilmById(long id){
-        for (Film director : films) {
-            if (id == director.getId()) {
-                return director;
-            }
-        }
-        return null;
-    }
-
-    public boolean updateFilm(Film updatedFilm) {
-        boolean validate=false;
-        for (int i = 0; i < films.size(); i++) {
-            if (films.get(i).getId() == updatedFilm.getId()) {
-                films.set(i, updatedFilm);
-                validate=true;
-                break;
-            }
-        }
-        return validate;
-    }
-
-    public boolean deleteFilm(long id) {
-        boolean validate=false;
-        if(films.removeIf(film -> film.getId() == id)){validate=true;}
-        return validate;
-    }
-
-    public ArrayList<Film> findFilmsByDirectorId(long directorId) {
-        ArrayList<Film> filmsByDirector = new ArrayList<>();
-        for (Film film : films) {
-            if (film.getDirector().getId() == directorId) {
-                filmsByDirector.add(film);
-            }
-        }
-        return filmsByDirector;
-    }
-
-
-
+public interface FilmRepository extends JpaRepository<Film, Long> {
+    List<Film> findByDirectorId(long directorId);
 }

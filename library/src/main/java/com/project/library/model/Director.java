@@ -1,7 +1,16 @@
 package com.project.library.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "directors")
 public class Director {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "name")
     private String name;
 
     public Director(){
