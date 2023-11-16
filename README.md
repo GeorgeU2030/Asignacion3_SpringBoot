@@ -30,7 +30,6 @@ Asegúrese de tener instalado lo siguiente en su sistema:
    ```
 
 3. **Configuración de la Base de Datos PostgreSQL:**
-   - Asegúrese de tener un servidor PostgreSQL en ejecución.
    - Configure las credenciales de la base de datos en `application.properties` ubicado en `library/src/main/resources`.
 
 4. **Ejecutar la Aplicación Spring Boot:**
